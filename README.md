@@ -1,74 +1,142 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-Your local README content
-=======
-Their GitHub README content
->>>>>>> origin/main
-=======
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# WooCommerce-Sync Laravel Project
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+This is a Laravel-based application designed to sync data with a WooCommerce store via the WooCommerce REST API.
 
-## About Laravel
+---
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 🚀 Features
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+* WooCommerce API Integration
+* Product synchronization
+* Seeded test user
+* Laravel 10+ setup
+* REST API-ready
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+---
 
-## Learning Laravel
+## 📁 Project Structure
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+```
+app/
+bootstrap/
+config/
+database/
+public/
+resources/
+routes/
+.env.example ✅
+README.md
+```
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+---
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## ⚙️ Requirements
 
-## Laravel Sponsors
+* PHP >= 8.1
+* Composer
+* Laravel 10+
+* MySQL or SQLite
+* WooCommerce store with API keys
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+---
 
-### Premium Partners
+## 💠 Setup Instructions
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+### 1. Clone the Repository
 
-## Contributing
+```bash
+git clone https://github.com/thetechweb-mahesh/Laravel-woocommerce.git
+cd Laravel-woocommerce
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+### 2. Install Dependencies
 
-## Code of Conduct
+```bash
+composer install
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 3. Configure Environment
 
-## Security Vulnerabilities
+Create a `.env` file from the provided `.env.example`:
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```bash
+cp .env.example .env
+```
 
-## License
+Update the WooCommerce API credentials in `.env`:
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
->>>>>>> e98bfc8 (first commit)
+```env
+WOOCOMMERCE_STORE_URL=https://your-store-url.com
+WOOCOMMERCE_CONSUMER_KEY=ck_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+WOOCOMMERCE_CONSUMER_SECRET=cs_xxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+```
+
+### 4. Generate Application Key
+
+```bash
+php artisan key:generate
+```
+
+### 5. Run Migrations and Seed Test Data
+
+```bash
+php artisan migrate --seed
+```
+
+### 6. Serve the Application
+
+```bash
+php artisan serve
+```
+
+---
+
+## 👤 Seeded Test User
+
+Use the following login credentials:
+
+* **Email:** `test@example.com`
+* **Password:** `password`
+
+> *(You can modify this in `DatabaseSeeder.php` or `UserSeeder` if needed)*
+
+---
+
+## 🌐 WooCommerce API Setup
+
+1. Go to your WooCommerce admin dashboard.
+2. Navigate to **WooCommerce > Settings > Advanced > REST API**.
+3. Click **Add Key**, and generate Consumer Key & Secret.
+4. Copy them into your `.env` file as shown above.
+
+---
+
+## 🧪 Optional: Postman Collection
+
+You can test the API endpoints using Postman. (You can include a link to the collection here if you have one.)
+
+---
+
+## 🌍 Optional: Public Testing via ngrok
+
+If you want to test webhooks or expose your local Laravel server:
+
+```bash
+ngrok http 8000
+```
+
+Then access Laravel via the provided public URL.
+
+---
+
+## 📃 About `.env` and `.env.example`
+
+* ✅ `.env.example` is included for guidance.
+* ❌ `.env` is ignored in `.gitignore` for security.
+* 👉 Copy `.env.example` to `.env` and update credentials.
+
+---
+
+## 📃 License
+
+This project is open-source and available under the [MIT License](https://opensource.org/licenses/MIT).
